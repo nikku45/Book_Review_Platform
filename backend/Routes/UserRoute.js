@@ -29,6 +29,8 @@ router.post("/register", async (req, res) => {
 
 
 router.post("/login", async (req, res) => {
+    console.log("Login endpoint hit");
+    console.log("Request body:", req.body);
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
