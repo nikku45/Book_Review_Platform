@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const user = JSON.parse(localStorage.getItem("user")); // Assuming user data is stored in localStorage
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    user ? (<nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-15xl mx-auto px-200 sm:px-6 lg:px-300">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -14,14 +15,16 @@ const Navbar = () => {
               to="/"
               className="text-gray-600 hover:text-blue-600 font-medium"
             >
-              Home
+             Books
             </Link>
-            <Link
-              to="/books"
-              className="text-gray-600 hover:text-blue-600 font-medium"
-            >
-              Books
-            </Link>
+            {user?.role === 'admin' && (
+              <Link
+                to="/admin"
+                className="text-gray-600 hover:text-blue-600 font-medium"
+              >
+                Add Book
+              </Link>
+            )}
            
             <Link
               to="/profile"
@@ -85,7 +88,9 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+  ) :null
   );
+    
 };
 
 export default Navbar;

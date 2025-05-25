@@ -32,7 +32,7 @@ const LoginPage = () => {
                     navigate('/admin'); // Redirect to admin page if user is an admin
                 }
                 else if(result.payload.user.role === 'user'){
-                navigate('/books'); 
+                navigate('/'); 
                 }
             } else if (result.meta.requestStatus === 'rejected') {
                 console.log("user does not exist");

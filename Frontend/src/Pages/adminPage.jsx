@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AdminAddBookPage = () => {
+    const navigate = useNavigate();
     const [book, setBook] = useState({
         title: '',
         author: '',
@@ -33,6 +35,7 @@ const AdminAddBookPage = () => {
                     genre: '',
                     image: '',
                 });
+                Navigate('/'); // Redirect to admin page after successful addition
             }
         } catch (error) {
             console.error('Error adding book:', error);

@@ -9,7 +9,8 @@ const bookdata = [
     "genre": "Dystopian",
     "publishedYear": 1949,
     "rating": 4.8,
-    "description": "A chilling depiction of a dystopian society under totalitarian rule, where individuality and freedom are suppressed."
+    "description": "A chilling depiction of a dystopian society under totalitarian rule, where individuality and freedom are suppressed.",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_u0S7cYc4ncDdS9rZo8a-cvDrt9Vuu1gSww&s"
   },
   {
     "_id": "64bdf2c85e6f4aeb9a45a682",
@@ -18,7 +19,8 @@ const bookdata = [
     "genre": "Romance",
     "publishedYear": 1813,
     "rating": 4.6,
-    "description": "A classic tale of love, class, and misunderstandings in 19th-century England, featuring the iconic Elizabeth Bennet and Mr. Darcy."
+    "description": "A classic tale of love, class, and misunderstandings in 19th-century England, featuring the iconic Elizabeth Bennet and Mr. Darcy.",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_u0S7cYc4ncDdS9rZo8a-cvDrt9Vuu1gSww&s"
   },
   {
     "_id": "64bdf2c85e6f4aeb9a45a683",
@@ -27,7 +29,8 @@ const bookdata = [
     "genre": "Fiction",
     "publishedYear": 1951,
     "rating": 4.3,
-    "description": "The story of Holden Caulfield, a young man navigating adolescence and searching for authenticity in a world he finds phony."
+    "description": "The story of Holden Caulfield, a young man navigating adolescence and searching for authenticity in a world he finds phony.",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_u0S7cYc4ncDdS9rZo8a-cvDrt9Vuu1gSww&s"
   },
   {
     "_id": "64bdf2c85e6f4aeb9a45a684",
@@ -36,7 +39,8 @@ const bookdata = [
     "genre": "Adventure",
     "publishedYear": 1851,
     "rating": 4.0,
-    "description": "An epic adventure of Captain Ahab's relentless pursuit of the elusive white whale, Moby Dick, filled with symbolism and grandeur."
+    "description": "An epic adventure of Captain Ahab's relentless pursuit of the elusive white whale, Moby Dick, filled with symbolism and grandeur.",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_u0S7cYc4ncDdS9rZo8a-cvDrt9Vuu1gSww&s"
   },
   {
     "_id": "64bdf2c85e6f4aeb9a45a685",
@@ -45,9 +49,11 @@ const bookdata = [
     "genre": "Fantasy",
     "publishedYear": 1937,
     "rating": 4.9,
-    "description": "A thrilling prelude to The Lord of the Rings, this fantasy novel follows Bilbo Baggins on his unexpected journey filled with dwarves, dragons, and adventure."
+    "description": "A thrilling prelude to The Lord of the Rings, this fantasy novel follows Bilbo Baggins on his unexpected journey filled with dwarves, dragons, and adventure.",
+    "imageURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_u0S7cYc4ncDdS9rZo8a-cvDrt9Vuu1gSww&s"
   }
 ];
+
 
 
 const connectDB = async () => {

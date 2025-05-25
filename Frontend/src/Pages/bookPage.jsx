@@ -44,7 +44,7 @@ const BooksPage = () => {
                   
                     <div key={book._id} className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:transform hover:-translate-y-2">
                         <img
-                            src={book.image}
+                            src={book.imageURL}
                             alt={book.title}
                             className="w-full h-48 object-cover"
                         />

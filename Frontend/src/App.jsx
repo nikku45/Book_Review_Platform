@@ -24,11 +24,10 @@ const App = () => {
                 {/* <Navbar /> */}
                  <Navbar />
                 <Routes>
-                 
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<RegisterPage />} />
                    
-                     <Route path="/books" element={
+                     <Route path="/" element={
                         <ProtectedRoute>
                             <BookListPage />
                         </ProtectedRoute>
