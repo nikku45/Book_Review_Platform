@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { signupUser } from '../redux/Slices/userSlice';
+import { signupUser } from '../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom'; // Commented for demo
 
 import { User, Mail, Lock, BookOpen, AlertCircle, CheckCircle, Loader2, Eye, EyeOff } from 'lucide-react';

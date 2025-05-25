@@ -23,8 +23,9 @@ router.get('/:id/review', async (req, res) => {
     }
 });
 
-router.post('/:id/review', async (req, res) => {
-    const { userId, bookId, rating, reviewText } = req.body;
+router.post('/', async (req, res) => {
+    console.log('Creating review with body:', req.body);
+    const { userId, bookId, rating, text } = req.body;
 
     try {
         const user = await User.findById(userId);
@@ -39,14 +40,16 @@ router.post('/:id/review', async (req, res) => {
         const newReview = new Review({
             user: userId,
             book: bookId,
-            rating,
-           reviewText
+             reviewText:text,
+            rating
+          
         });
+        const savedReview = await newReview.save();
         user.reviews.push(newReview._id);
         await user.save();
         book.reviews.push(newReview._id);
         await book.save();
-        const savedReview = await newReview.save();
+        
         res.status(201).json(savedReview);
     } catch (error) {
         res.status(400).json({ message: 'Error creating review', error });

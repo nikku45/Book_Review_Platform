@@ -38,6 +38,10 @@ const bookSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
         },
+        description: {
+            type: String,
+            required: false,
+        },
     },
     {
         timestamps: true, // Automatically adds `createdAt` and `updatedAt` timestamps

@@ -21,7 +21,7 @@ app.use(cors());
 app.use('/user',UserRoute);
 app.use('/book',BookRoute);
 app.use('/user/profile', ProfileRoute);
-app.use('/book/review', ReviewRoute);
+app.use('/review', ReviewRoute);
 
 
 app.get('/',(req, res) => {

@@ -1,5 +1,6 @@
 const router=require("express").Router();
 const Book = require("../Models/Book"); 
+const Review = require("../Models/Review");
 
 router.get("/", async (req, res) => {
     try {
@@ -11,12 +12,17 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    console.log(`Fetching book with ID: ${id}`);
+    
     try {
-        const book = await Book.findById(req.params.id);
+        const book = await Book.findById(id);
+        
         if (!book) {
             return res.status(404).json({ message: "Book not found" });
         }
-        res.status(200).json(book);
+        console.log(`Fetched book: ${Book}`);
+        res.status(200).json({book, reviews: await Review.find({ book: id }).populate("user", "name")});
     } catch (error) {
         res.status(500).json({ message: "Internal server error", error });
     }

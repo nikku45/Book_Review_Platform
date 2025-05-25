@@ -10,6 +10,8 @@ export const loginUser = createAsyncThunk(
             const response = await axios.post('http://localhost:5000/user/login', credentials);
             // Ensure the response structure matches what you expect in reducers
             // Example: { user: ..., token: ... }
+            console.log('Login response:', response.data);
+            localStorage.setItem('user', JSON.stringify(response.data.user));
             return response.data;
         } catch (error) {
             return rejectWithValue(

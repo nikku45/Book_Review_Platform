@@ -5,7 +5,8 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 // import HomePage from './pages/HomePage';
 import BookListPage from './Pages/bookPage';
-// import BookDetailPage from './pages/BookDetailPage';
+import BookDetailPage from './Pages/bookDetailPage';
+import ProtectedRoute from './Components/ProtectedRoute';
 // import ProfilePage from './pages/ProfilePage';
 import LoginPage from './Pages/LoginPage';
 import RegisterPage from './Pages/SignupPage';
@@ -19,13 +20,22 @@ const App = () => {
             <Router>
                 {/* <Navbar /> */}
                 <Routes>
-                    {/* <Route path="/" element={<HomePage />} />
-                   
-                    <Route path="/books/:id" element={<BookDetailPage />} />
-                    <Route path="/profile" element={<ProfilePage />} /> */}
+                 
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<RegisterPage />} />
-                     <Route path="/books" element={<BookListPage />} />
+                    
+                     <Route path="/books" element={
+                        <ProtectedRoute>
+                            <BookListPage />
+                        </ProtectedRoute>
+                     } />
+                      
+                     <Route path="/books/:id" element={
+                      <ProtectedRoute>
+                        <BookDetailPage />
+                      </ProtectedRoute>
+                    } />
+                     
                 </Routes>
                 {/* <Footer /> */}
             </Router>

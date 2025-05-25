@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../redux/Slices/userSlice';
+import { loginUser } from '../redux/slices/userSlice';
 import { Eye, EyeOff, Mail, Lock, BookOpen, AlertCircle, Loader2 } from 'lucide-react';
 
 const LoginPage = () => {
@@ -27,7 +27,13 @@ const LoginPage = () => {
             const result = await dispatch(loginUser({ email, password }));
             if (result.meta.requestStatus === 'fulfilled') {
                 console.log('Login successful:', result.payload);
+               // Store user data in localStorage
                 // Handle successful login (e.g., redirect)
+                navigate('/books'); // Redirect to books page after successful login
+            } else if (result.meta.requestStatus === 'rejected') {
+                console.log("user does not exist");
+                console.error('Login failed:', result.payload);
+                setLocalError(result.payload?.message || 'Login failed. Please check your credentials.');
                 
             } else {
                 console.log("user does not exist");
@@ -201,7 +207,7 @@ const LoginPage = () => {
                 <div className="text-center mt-8">
                     <p className="text-sm text-gray-600">
                         Don't have an account?{' '}
-                        <button onClick={navigate('/signup')}className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors">
+                        <button  onClick={()=>navigate("/signup")} className="text-blue-600 hover:text-blue-800 font-medium hover:underline transition-colors">
                             Sign up for free
                         </button>
                     </p>
