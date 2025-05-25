@@ -15,7 +15,7 @@ const LoginPage = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [localError, setLocalError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    const [role, setRole] = useState('user'); // Default role is 'user'
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLocalError('');
@@ -24,12 +24,16 @@ const LoginPage = () => {
         console.log(`checking email: ${email} and password: ${password}`);
         
         try {
-            const result = await dispatch(loginUser({ email, password }));
+            const result = await dispatch(loginUser({ email, password,role }));
             if (result.meta.requestStatus === 'fulfilled') {
                 console.log('Login successful:', result.payload);
-               // Store user data in localStorage
-                // Handle successful login (e.g., redirect)
-                navigate('/books'); // Redirect to books page after successful login
+              
+                if(result.payload.user.role === 'admin'){
+                    navigate('/admin'); // Redirect to admin page if user is an admin
+                }
+                else if(result.payload.user.role === 'user'){
+                navigate('/books'); 
+                }
             } else if (result.meta.requestStatus === 'rejected') {
                 console.log("user does not exist");
                 console.error('Login failed:', result.payload);
@@ -125,6 +129,22 @@ const LoginPage = () => {
                                         <Eye className="h-5 w-5" />
                                     )}
                                 </button>
+                                {/* Role Select */}
+                                <div className="mt-12">
+                                    <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+                                        Select Role
+                                    </label>
+                                    <select
+                                        id="role"
+                                        value={role}
+                                        onChange={(e) => setRole(e.target.value)}
+                                        className="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-sm"
+                                        disabled={isSubmitting}
+                                    >
+                                        <option value="user">User</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

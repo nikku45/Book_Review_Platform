@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
-    console.log(`Fetching book with ID: ${id}`);
+    
     
     try {
         const book = await Book.findById(id);
@@ -21,7 +21,7 @@ router.get("/:id", async (req, res) => {
         if (!book) {
             return res.status(404).json({ message: "Book not found" });
         }
-        console.log(`Fetched book: ${Book}`);
+      
         res.status(200).json({book, reviews: await Review.find({ book: id }).populate("user", "name")});
     } catch (error) {
         res.status(500).json({ message: "Internal server error", error });
@@ -29,15 +29,14 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-    const { title, author, genre, summary, ratings, imageURL } = req.body;
+    const { title, author,description,genre, imageURL } = req.body;
 
     try {
         const newBook = new Book({
             title,
             author,
             genre,
-            summary,
-            ratings,
+            description,
             imageURL
         });
 
